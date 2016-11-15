@@ -30,10 +30,10 @@ class Fixnum
     # number_words.store("90", "ninety")
 
     output_string = ""
-    output_strings = []
+    digit_strings = []
     number_string = self.to_s
-    new_string = number_words.fetch(number_string)
-    new_string
+    output_string = number_words.fetch(number_string)
+    output_string
     # output_strings.unshift(new_string)
     # output_string = output_strings.join("-")
     # output_string
