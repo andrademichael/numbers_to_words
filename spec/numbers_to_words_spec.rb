@@ -5,14 +5,13 @@ describe('Fixnum#numbers_to_words') do
   it('returns the string one for 1') do
     expect(1.numbers_to_words).to(eq("one"))
   end
-  it('returns any single digit string up to 20') do
+  it('returns any digit string up to 20') do
     expect(14.numbers_to_words).to(eq("fourteen"))
   end
-  # it('returns a word string for a digit string up to 99') do
-  #   expect(33.numbers_to_words).to(eq("thirty-three"))
-  # end
+  it('returns a string for a digit string up to 99') do
+    expect(42.numbers_to_words).to(eq("forty-two"))
+  end
 end
-
 
 # 1
 # 2
