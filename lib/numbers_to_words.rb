@@ -1,7 +1,7 @@
 class Fixnum
   define_method(:numbers_to_words) do
     number_words = Hash.new()
-    number_words.store(0, "zero")
+    number_words.store(0, "")
     number_words.store(1, "one")
     number_words.store(2, "two")
     number_words.store(3, "three")
@@ -29,17 +29,40 @@ class Fixnum
     number_words.store(70, "seventy")
     number_words.store(80, "eighty")
     number_words.store(90, "ninety")
+    number_words.store(100, "hundred")
+    # Branch for 1-20
 
+    output_string = ""
     if self <= 20
-      output_string = number_words.fetch(self)
-      output_string
-    else
+    output_string = number_words.fetch(self)
+      # output_string
+    # Branch for 21-99
+    elsif self < 100
       ones = self % 10
       tens = self - ones
       output_string = number_words.fetch(tens) + "-" + number_words.fetch(ones)
-      output_string
-    end
+      # output_string
+    # Branch for 100-999
+    elsif self < 1000
+      ones = self % 10
+      tens = self - ones - (self.divmod(100)[0] * 100)
+      hundreds_multiple = (self / 100).floor()
+      hundreds = number_words.fetch(hundreds_multiple) + " hundred"
 
+      if ones != 0
+        output_string.push(number_words.fetch(ones))
+      end
+
+      if ones != 0 and tens != 0
+        output_string.push("-")
+      end
+      if tens != 0
+        output_string.push(number_words.fetch(tens))
+      end
+
+      output_string.push(hundreds)
+    end
+    output_string
     # digits.each().with_index do |digit, i|
     #   for i in 1.. do
     #     digit = digit + "0"

@@ -11,6 +11,9 @@ describe('Fixnum#numbers_to_words') do
   it('returns a string for a digit string up to 99') do
     expect(42.numbers_to_words).to(eq("forty-two"))
   end
+  it('returns the string for a number up to 999') do
+    expect(500.numbers_to_words).to(eq("five hundred"))
+  end
 end
 
 # 1
